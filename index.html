@@ -9,23 +9,519 @@
 <body>
     
     <nav id="navbar">
-        <header>Title of Doc</header>
-
+        <header>Purrfect Paws Subscription API</header>
+        <ul>
+            <li><a href="#introduction" class="nav-link">Introduction</a></li>
+            <li><a href="#authentication" class="nav-link">Authentication</a></li>
+            <li><a href="#endpoints" class="nav-link">Endpoints</a></li>
+            <li><a href="#data_models" class="nav-link">Data Models</a></li>
+            <li><a href="#error_handling" class="nav-link">Error Handling</a></li>
+            <li><a href="#examples" class="nav-link">Examples</a></li>
+        </ul>
     </nav>
 
     <main id="main-doc">
-        <section class="main-section" id="topic_1">
-            <header><h1>Topic 1</h1></header>
-            <p></p>
-            <code></code>
-            <li></li>
+        <h1>Purrfect Paws Subscription Box Application Programming Interface</h1>
+        <section class="main-section" id="introduction">
+            <header><h2>Introduction</h2></header>
+            <p>Welcome to the Purrfect Paws Subscription Box API technical documentation. This page outlines the structure and functionality of a hypothetical API designed to power a personalized cat subscription box service. The goal of this project was to simulate the back-end logic and API endpoints required to support a customizable subscription box system.</p>
+            <h3>Purpose</h3>
+            <p>The purpose of this API is to serve as the backbone of the Purrfect Paws Subscription Box service, providing a way to manage the complexities of personalization and order fulfillment. This documentation walks through the design of endpoints that enable the core functionality behind a subscription service, including user registration, product selection, and delivery scheduling. It was created as part of a web development exercise to simulate a real-world API design process.</p>
+            <p>Key components covered in this documentation:</p>
+            <ul>
+                <li>API architecture for managing subscriptions and item preferences.</li>
+                <li>Processes for customizing boxes based on a cat’s unique profile.</li>
+                <li>Handling of subscription lifecycle, from creation to cancellation.</li>
+            </ul>
         </section>
 
+        <section class="main-section" id="authentication">
+            <header><h2>Authentication</h2></header>
+            <p>The Purrfect Paws Subscription Box API requires authentication to ensure that only authorized users can interact with the service. This is achieved using an API key system, where developers must include a valid API key in their requests to access or modify data.</p>
+            <h3>API Key</h3>
+            <p>To access the API, each developer is assigned a unique API key. This key must be included in the Authorization header of every request.</p>
+            <ul>
+                <li>Header Format:</li>
+                <code>Authorization: Bearer YOUR_API_KEY</code>
+                <li>Example Request:</li>
+                <code>GET /subscriptions
+                    Host: api.purrfectpaws.com
+                    Authorization: Bearer ABCD1234
+                </code>
+                <p>If the API key is invalid or missing, you will receive a 401 Unauthorized response.</p>
+                <li>Error Response:</li>
+                <code>{
+                    "error": "Unauthorized",
+                    "message": "Invalid API Key"
+                  }
+                </code>
+            </ul>
+        </section>
 
-        <section class="main-section" id="topic2"></section>
-        <section class="main-section" id="topic3"></section>
-        <section class="main-section" id="topic4"></section>
-        <section class="main-section" id="topic5"></section>
+        <section class="main-section" id="endpoints">
+            <header><h2>Endpoints</h2></header>
+            <p>This section provides details on the main API endpoints for managing cats, subscriptions, and items. Each endpoint includes the HTTP method, path, required parameters, and example request/response data.</p>
+            <h3>1. GET /cats</h3>
+            <p><span class=bold>Description:</span> Retrieve a list of all registered cats in the system.</p>
+            <ul>
+                <li>Request:</li>
+                <code>GET /cats</code>
+                <li>Response:</li>
+                <code>[
+                    {
+                      "id": "cat123",
+                      "name": "Whiskers",
+                      "age": 4,
+                      "personality": "Playful"
+                    },
+                    {
+                      "id": "cat456",
+                      "name": "Luna",
+                      "age": 2,
+                      "personality": "Relaxed"
+                    }
+                  ]
+                </code>
+            </ul>
+
+
+            <h3>2. POST /cats</h3>
+            <p><span class="bold">Description:</span> Register a new cat in the system.</p>
+            <ul>
+                <li>Request:</li>
+                <code>POST /cats</code>
+                <li>Body:</li>
+                <code>{
+                    "name": "Shadow",
+                    "age": 3,
+                    "personality": "Curious"
+                  }
+                </code>
+                <li>Response:</li>
+                <code>{
+                    "id": "cat789",
+                    "name": "Shadow",
+                    "age": 3,
+                    "personality": "Curious"
+                  }
+                </code>
+            </ul>
+
+
+            <h3>3. GET /subscriptions</h3>
+            <p><span class="bold">Description:</span> Retrieve all subscriptions in the system or filter by a specific cat.</p>
+            <ul>
+                <li>Request:</li>
+                <code>GET /subscriptions</code>
+                <li>Query Parameters (Optional)</li>
+                <li>cat_id - Retrieve subscriptions for a specific cat.</li>
+                <li>Response:</li>
+                <code>[
+                    {
+                      "subscription_id": "sub123",
+                      "cat_id": "cat123",
+                      "items": {
+                        "toys": ["feather", "laser_pointer"],
+                        "treats": ["salmon_bites"],
+                        "blanket": "soft_wool",
+                        "bed": "plush"
+                      },
+                      "frequency": "monthly",
+                      "next_delivery": "2024-11-01"
+                    }
+                  ] 
+                </code>
+            </ul>
+
+            <h3>4. POST /subscriptions</h3>
+            <p><span class="bold">Description:</span>Create a new subscription box for a cat.</p>
+            <ul>
+                <li>Request:</li>
+                <code>POST /subscriptions</code>
+                <li>Body:</li>
+                <code>{
+                    "cat_id": "cat123",
+                    "items": {
+                      "toys": ["feather", "laser_pointer"],
+                      "treats": ["salmon_bites"],
+                      "blanket": "soft_wool",
+                      "bed": "plush"
+                    },
+                    "frequency": "monthly"
+                  }
+                </code>
+                <li>Response:</li>
+                <code>{
+                    "subscription_id": "sub456",
+                    "status": "created",
+                    "next_delivery": "2024-11-01"
+                  }
+                </code>
+            </ul>
+
+
+            <h3>5. DELETE /subscriptions/{subscription_id}</h3>
+            <p><span class="bold">Description:</span>Cancel an existing subscription.</p>
+            <ul>
+                <li>Request:</li>
+                <code>DELETE /subscriptions/sub456</code>
+                <li>Response:</li>
+                <code>{
+                    "subscription_id": "sub456",
+                    "status": "cancelled"
+                  }
+                </code>
+            </ul>
+
+
+            <h3>6. PATCH /subscriptions/{subscription_id}</h3>
+            <p><span class="bold">Description:</span>Update the items in an existing subscription.</p>
+            <ul>
+                <li>Request:</li>
+                <code>PATCH /subscriptions/sub456</code>
+                <li>Body:</li>
+                <code>{
+                    "items": {
+                      "toys": ["feather", "ball"],
+                      "treats": ["chicken_bites"],
+                      "blanket": "cotton",
+                      "bed": "memory_foam"
+                    }
+                  }
+                </code>
+                <li>Response:</li>
+                <code>{
+                    "subscription_id": "sub456",
+                    "status": "updated",
+                    "next_delivery": "2024-12-01"
+                  }
+                </code>
+            </ul>
+
+        </section>
+
+        <section class="main-section" id="data_models">
+            <header><h2>Data Models</h2></header>
+            <p>This section provides definitions for the main data objects used in the Purrfect Paws Subscription Box API. These models describe the structure of the data and what each attribute represents.</p>
+            <h3>1. Cat Object</h3>
+            <p>The Cat object represents a cat registered in the subscription system. Each cat has attributes that help personalize the subscription box.</p>
+            <li>Attributes:</li>
+            <ul>
+                <li>id: (string) - A unique identifier for the cat.</li>
+                <li>name: (string) - The cat’s name.</li>
+                <li>age: (number) - The cat’s age in years.</li>
+                <li>personality: (string) - A description of the cat’s personality (e.g., "Playful", "Curious").</li>
+            </ul>
+            <li>Example:</li>
+            <code>{
+                "id": "cat123",
+                "name": "Whiskers",
+                "age": 4,
+                "personality": "Playful"
+              }
+            </code>
+
+            <h3>2. Subscription Object</h3>
+            <p>The Subscription object represents a subscription box tied to a specific cat. This object includes details about the items selected for the box and the delivery schedule.</p>
+            <li>Attributes:</li>
+            <ul>
+                <li>subscription_id: (string) - A unique identifier for the subscription.</li>
+                <li>cat_id: (string) - The ID of the cat the subscription is for.</li>
+                <li>items: (object) - An object containing the selected items (toys, treats, blanket, bed) for the subscription box.</li>
+                <ul>
+                    <li>toys: (array of strings) - List of selected toys.</li>
+                    <li>treats: (array of strings) - List of selected treats.</li>
+                    <li>blanket: (string) - The type of blanket selected.</li>
+                    <li>bed: (string) - The type of bed selected.</li>
+                </ul>
+                <li>frequency: (string) - The frequency of the subscription box (e.g., "monthly", "bi-monthly").</li>
+                <li>next_delivery: (string, date) - The date of the next scheduled delivery.</li>
+                <li>status: (string) - The current status of the subscription (e.g., "created", "cancelled").</li>
+            </ul>
+            <li>Example:</li>
+            <code>{
+                "subscription_id": "sub456",
+                "cat_id": "cat123",
+                "items": {
+                  "toys": ["feather", "laser_pointer"],
+                  "treats": ["salmon_bites"],
+                  "blanket": "soft_wool",
+                  "bed": "plush"
+                },
+                "frequency": "monthly",
+                "next_delivery": "2024-11-01",
+                "status": "created"
+              }
+            </code>
+
+            <h3>3. Item Object</h3>
+            <p>The Item object represents the individual products (toys, treats, blankets, beds) that can be added to a subscription box.</p>
+            <li>Attributes:</li>
+            <ul>
+                <li>name: (string) - The name of the item.</li>
+                <li>category: (string) - The type of item (e.g., "toy", "treat", "blanket", "bed").</li>
+                <li>description: (string) - A brief description of the item.</li>
+                <li>price: (number) - The price of the item in USD.</li>
+            </ul>
+            <li>Example:</li>
+            <code>{
+                "name": "Feather Toy",
+                "category": "toy",
+                "description": "A fun feather toy to keep your cat entertained.",
+                "price": 5.99
+              }
+            </code>
+
+            <h3>4. User Object</h3>
+            <p>If your API allows for user management, you can define a User object representing the user who is managing the subscription boxes.</p>
+            <li>Attributes:</li>
+            <ul>
+                <li>user_id: (string) - A unique identifier for the user.</li>
+                <li>email: (string) - The user's email address.</li>
+                <li>name: (string) - The name of the user.</li>
+                <li>subscriptions: (array of strings) - A list of subscription IDs that the user manages.</li>
+            </ul>
+            <li>Example:</li>
+            <code>{
+                "user_id": "user789",
+                "email": "catlover@example.com",
+                "name": "Jane Doe",
+                "subscriptions": ["sub456", "sub789"]
+              }
+            </code>
+        </section>
+
+        <section class="main-section" id="error_handling">
+            <header><h2>Error Handling</h2></header>
+            <p>The Purrfect Paws Subscription Box API uses standard HTTP status codes to indicate the success or failure of API requests. In case of an error, the API returns a JSON response with details about the error, including the status code and a message explaining what went wrong.</p>
+            <h3>Error Response Format</h3>
+            <p>All error responses follow the structure below:</p>
+            <code>{
+                "error": "string",
+                "message": "string",
+                "status_code": "number"
+              }
+            </code>
+            <ul>
+                <li>error: A brief description of the type of error.</li>
+                <li>message: A more detailed explanation of what went wrong.</li>
+                <li>status_code: The HTTP status code associated with the error.</li>
+            </ul>
+
+            <h3>Common HTTP Status Codes</h3>
+            <p>Here are the most common HTTP status codes you may encounter while using the API:</p>
+            <ul>
+                <li>200 OK: The request was successful, and the server returned the requested data.</li>
+                <li>201 Created: The request was successful, and a new resource (e.g., subscription, cat) was created.</li>
+                <li>400 Bad Request: The server could not process the request due to invalid input (e.g., missing required fields or malformed JSON).</li>
+                <li>401 Unauthorized: Authentication failed, usually due to a missing or invalid API key.</li>
+                <li>404 Not Found: The requested resource could not be found (e.g., a non-existent subscription ID).</li>
+                <li>500 Internal Server Error: An unexpected error occurred on the server side.</li>
+            </ul>
+
+            <h3>Examples of Error Responses</h3>
+            <p>1. 400 Bad Request</p>
+            <p>Occurs when the client sends a request with missing or invalid data.</p>
+            <ul>
+                <li>Example Scenario: Trying to create a subscription without specifying required fields (like cat_id).</li>
+                <li>Response:</li>
+                <code>{
+                    "error": "Bad Request",
+                    "message": "Missing required field: cat_id",
+                    "status_code": 400
+                  }
+                </code>
+            </ul>
+            <p>2. 401 Unauthorized</p>
+            <p>Occurs when authentication fails due to a missing or invalid API key.</p>
+            <ul>
+                <li>Example Scenario: Making a request without including the API key in the Authorization header.</li>
+                <li>Response:</li>
+                <code>{
+                    "error": "Unauthorized",
+                    "message": "API key is missing or invalid",
+                    "status_code": 401
+                  }
+                </code>
+            </ul>
+            <p>3. 404 Not Found</p>
+            <p>Occurs when the client requests a resource that does not exist.</p>
+            <ul>
+                <li>Example Scenario: Trying to retrieve a subscription with an invalid subscription_id.</li>
+                <li>Response:</li>
+                <code>{
+                    "error": "Not Found",
+                    "message": "The subscription with ID 'sub789' was not found",
+                    "status_code": 404
+                  }
+                </code>
+            </ul>
+            <p>4. 500 Internal Server Error</p>
+            <p>Occurs when the server encounters an unexpected error. This is typically a server-side issue that should be reported to the API provider.</p>
+            <ul>
+                <li>Example Scenario: A system error occurs while processing a request.</li>
+                <li>Response:</li>
+                <code>
+                    {
+                        "error": "Internal Server Error",
+                        "message": "An unexpected error occurred. Please try again later.",
+                        "status_code": 500
+                      }
+                </code>
+            </ul>
+
+            <h3>Handling Errors</h3>
+            <p>When receiving an error response, developers should:</p>
+            <ul>
+                <li>Inspect the status_code to determine the type of error.</li>
+                <li>Read the message for more detailed information about the issue.</li>
+                <li>Verify that the request complies with the API documentation (e.g., required fields, proper authentication).</li>
+            </ul>
+        </section>
+
+        <section class="main-section" id="examples">
+            <header><h2>Examples</h2></header>
+            <p>This section provides practical examples of how to use the Purrfect Paws Subscription Box API to perform common tasks, such as registering a cat, creating a subscription, and updating subscription details.</p>
+            
+            <h3>1. Register a New Cat</h3>
+            <p>This example shows how to add a new cat to the system. After successfully registering a cat, you’ll receive an id to use for future requests related to that cat.</p>
+            <ul>
+               <li>Request:</li> 
+               <code>POST /cats
+                Content-Type: application/json
+                Authorization: Bearer YOUR_API_KEY
+                </code>
+               <li>Body:</li> 
+               <code>
+                {
+                    "name": "Simba",
+                    "age": 5,
+                    "personality": "Adventurous"
+                  }
+               </code>
+               <li>Response</li> 
+               <code>{
+                "id": "cat001",
+                "name": "Simba",
+                "age": 5,
+                "personality": "Adventurous"
+              }
+              </code>
+            </ul>
+
+            <h3>2. Create a Subscription for a Cat</h3>
+            <p>This example demonstrates how to create a personalized subscription box for a specific cat using the cat_id from the previous step.</p>
+            <ul>
+               <li>Request:</li> 
+               <code>POST /subscriptions
+                Content-Type: application/json
+                Authorization: Bearer YOUR_API_KEY
+                </code>
+               <li>Body:</li> 
+               <code>{
+                "cat_id": "cat001",
+                "items": {
+                  "toys": ["feather", "ball"],
+                  "treats": ["tuna_bites"],
+                  "blanket": "soft_wool",
+                  "bed": "plush"
+                },
+                "frequency": "monthly"
+              }
+              </code>
+               <li>Response</li> 
+               <code>{
+                "subscription_id": "sub001",
+                "status": "created",
+                "next_delivery": "2024-11-01"
+              }
+              </code>
+            </ul>
+
+            <h3>3. Retrieve All Subscriptions</h3>
+            <p>This example retrieves a list of all subscriptions, showing the items for each cat.</p>
+            <ul>
+               <li>Request:</li> 
+               <code>GET /subscriptions
+                Authorization: Bearer YOUR_API_KEY
+                </code>
+               <li>Response</li> 
+               <code>[
+                {
+                  "subscription_id": "sub001",
+                  "cat_id": "cat001",
+                  "items": {
+                    "toys": ["feather", "ball"],
+                    "treats": ["tuna_bites"],
+                    "blanket": "soft_wool",
+                    "bed": "plush"
+                  },
+                  "frequency": "monthly",
+                  "next_delivery": "2024-11-01"
+                }
+              ]
+              </code>
+            </ul>
+
+            <h3>4. Update an Existing Subscription</h3>
+            <p>Here’s an example of how to update the items in an existing subscription. You can modify specific parts of the subscription, such as changing the toy selection.</p>
+            <ul>
+               <li>Request:</li> 
+               <code>PATCH /subscriptions/sub001
+                Content-Type: application/json
+                Authorization: Bearer YOUR_API_KEY
+                </code>
+               <li>Body:</li> 
+               <code>{
+                "items": {
+                  "toys": ["mouse", "laser_pointer"],
+                  "treats": ["chicken_bites"]
+                }
+              }
+              </code>
+               <li>Response</li>
+               <code>{
+                "subscription_id": "sub001",
+                "status": "updated",
+                "next_delivery": "2024-12-01"
+              }
+              </code>
+            </ul>
+
+            <h3>5. Cancel a Subscription</h3>
+            <p>This example shows how to cancel a subscription for a cat. The subscription_id is required for this request.</p>
+            <ul>
+               <li>Request:</li>
+               <code>DELETE /subscriptions/sub001
+                Authorization: Bearer YOUR_API_KEY
+                </code> 
+               <li>Response</li> 
+               <code>{
+                "subscription_id": "sub001",
+                "status": "cancelled"
+              }
+              </code>
+            </ul>
+
+            <h3>6. Handle an Error (Invalid API Key)</h3>
+            <p>This example demonstrates how an error response might look if you use an invalid API key in your request.</p>
+            <ul>
+               <li>Request:</li> 
+               <code>GET /cats
+                Authorization: Bearer INVALID_API_KEY
+                </code>
+               <li>Response</li> 
+               <code>{
+                "error": "Unauthorized",
+                "message": "API key is missing or invalid",
+                "status_code": 401
+              }
+              </code>
+            </ul>
+        </section>
+
+        <h2>Conclusion</h2>
+        <p>These examples show how to perform essential operations within the Purrfect Paws Subscription Box API, from managing cat profiles to updating and canceling subscriptions. By using these examples as a guide, developers can quickly integrate the API into their own applications.</p>
 
     </main>
 
