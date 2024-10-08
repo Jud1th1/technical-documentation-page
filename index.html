@@ -9,7 +9,7 @@
 <body>
     
     <nav id="navbar">
-        <header>Purrfect Paws Subscription API</header>
+        <header><h2>Subscription API</h2></header>
         <ul>
             <li><a href="#introduction" class="nav-link">Introduction</a></li>
             <li><a href="#authentication" class="nav-link">Authentication</a></li>
@@ -24,9 +24,9 @@
         <h1>Purrfect Paws Subscription Box Application Programming Interface</h1>
         <section class="main-section" id="introduction">
             <header><h2>Introduction</h2></header>
-            <p>Welcome to the Purrfect Paws Subscription Box API technical documentation. This page outlines the structure and functionality of a hypothetical API designed to power a personalized cat subscription box service. The goal of this project was to simulate the back-end logic and API endpoints required to support a customizable subscription box system.</p>
+            <p>Welcome to the <span class="special-text">Purrfect Paws Subscription Box ©</span> API technical documentation. This page outlines the structure and functionality of a hypothetical API designed to power a personalized cat subscription box service. The goal of this project was to simulate the back-end logic and API endpoints required to support a customizable subscription box system.</p>
             <h3>Purpose</h3>
-            <p>The purpose of this API is to serve as the backbone of the Purrfect Paws Subscription Box service, providing a way to manage the complexities of personalization and order fulfillment. This documentation walks through the design of endpoints that enable the core functionality behind a subscription service, including user registration, product selection, and delivery scheduling. It was created as part of a web development exercise to simulate a real-world API design process.</p>
+            <p>The purpose of this API is to serve as the backbone of the <span class="special-text">Purrfect Paws Subscription Box ©</span> service, providing a way to manage the complexities of personalization and order fulfillment. This documentation walks through the design of endpoints that enable the core functionality behind a subscription service, including user registration, product selection, and delivery scheduling. It was created as part of a web development exercise to simulate a real-world API design process.</p>
             <p>Key components covered in this documentation:</p>
             <ul>
                 <li>API architecture for managing subscriptions and item preferences.</li>
@@ -34,29 +34,38 @@
                 <li>Handling of subscription lifecycle, from creation to cancellation.</li>
             </ul>
         </section>
+        <hr>
 
         <section class="main-section" id="authentication">
             <header><h2>Authentication</h2></header>
-            <p>The Purrfect Paws Subscription Box API requires authentication to ensure that only authorized users can interact with the service. This is achieved using an API key system, where developers must include a valid API key in their requests to access or modify data.</p>
+            <p><span class="special-text">Purrfect Paws Subscription Box ©</span> API requires authentication to ensure that only authorized users can interact with the service. This is achieved using an API key system, where developers must include a valid API key in their requests to access or modify data.</p>
             <h3>API Key</h3>
             <p>To access the API, each developer is assigned a unique API key. This key must be included in the Authorization header of every request.</p>
             <ul>
                 <li>Header Format:</li>
-                <code>Authorization: Bearer YOUR_API_KEY</code>
+                <div class="code-box">
+                    <code>Authorization: Bearer YOUR_API_KEY</code>
+                </div>
                 <li>Example Request:</li>
-                <code>GET /subscriptions
-                    Host: api.purrfectpaws.com
-                    Authorization: Bearer ABCD1234
-                </code>
+                <div class="code-box">
+                    <code>
+                        GET /subscriptions<br>
+                        Host: api.purrfectpaws.com<br>
+                        Authorization: Bearer ABCD1234
+                    </code>
+                </div>
                 <p>If the API key is invalid or missing, you will receive a 401 Unauthorized response.</p>
                 <li>Error Response:</li>
-                <code>{
-                    "error": "Unauthorized",
-                    "message": "Invalid API Key"
-                  }
-                </code>
+                <div class="code-box">
+                    <code>{<br>
+                        <span class="redtxt">"error":</span> <span class="grntxt">"Unauthorized"</span>,<br>
+                        <span class="redtxt">"message":</span> <span class="grntxt">"Invalid API Key"</span><br>
+                    }
+                    </code>
+                </div>
             </ul>
         </section>
+        <hr>
 
         <section class="main-section" id="endpoints">
             <header><h2>Endpoints</h2></header>
@@ -199,6 +208,7 @@
             </ul>
 
         </section>
+        <hr>
 
         <section class="main-section" id="data_models">
             <header><h2>Data Models</h2></header>
@@ -290,6 +300,7 @@
               }
             </code>
         </section>
+        <hr>
 
         <section class="main-section" id="error_handling">
             <header><h2>Error Handling</h2></header>
@@ -378,6 +389,7 @@
                 <li>Verify that the request complies with the API documentation (e.g., required fields, proper authentication).</li>
             </ul>
         </section>
+        <hr>
 
         <section class="main-section" id="examples">
             <header><h2>Examples</h2></header>
@@ -519,12 +531,12 @@
               </code>
             </ul>
         </section>
+        <hr>
 
         <h2>Conclusion</h2>
         <p>These examples show how to perform essential operations within the Purrfect Paws Subscription Box API, from managing cat profiles to updating and canceling subscriptions. By using these examples as a guide, developers can quickly integrate the API into their own applications.</p>
 
     </main>
-
 
 
 
