@@ -72,9 +72,21 @@ code{
     background-color: #3b3c3f;  
     color: white;
     font-size: 14px;
-    padding: 2%;
-    margin: 2%;
+    padding: 15px;
+    margin: 15px 0;
     border-radius: 10px;
+}
+
+.indent{
+    padding-left: 15px;
+}
+
+.indent2{
+    padding-left: 25px;
+}
+
+.indent3{
+    padding-left: 40px;
 }
 
 .redtxt{
@@ -83,4 +95,11 @@ code{
 
 .grntxt{
     color: rgb(40, 196, 149);
+}
+
+.codetxt{
+    background: rgb(204, 202, 202);
+    font-family: monospace;
+    padding: 2px;
+    border-radius: 3px;
 }

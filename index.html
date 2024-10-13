@@ -40,7 +40,7 @@
             <header><h2>Authentication</h2></header>
             <p><span class="special-text">Purrfect Paws Subscription Box ©</span> API requires authentication to ensure that only authorized users can interact with the service. This is achieved using an API key system, where developers must include a valid API key in their requests to access or modify data.</p>
             <h3>API Key</h3>
-            <p>To access the API, each developer is assigned a unique API key. This key must be included in the Authorization header of every request.</p>
+            <p>To access the API, each developer is assigned a unique API key. This key must be included in the <span class="codetxt">Authorization</span> header of every request.</p>
             <ul>
                 <li>Header Format:</li>
                 <div class="code-box">
@@ -49,17 +49,17 @@
                 <li>Example Request:</li>
                 <div class="code-box">
                     <code>
-                        GET /subscriptions<br>
-                        Host: api.purrfectpaws.com<br>
-                        Authorization: Bearer ABCD1234
+                    GET /subscriptions
+                    Host: api.purrfectpaws.com
+                    Authorization: Bearer ABCD1234
                     </code>
                 </div>
-                <p>If the API key is invalid or missing, you will receive a 401 Unauthorized response.</p>
+                <p>If the API key is invalid or missing, you will receive a <span class="codetxt">401 Unauthorized</span> response.</p>
                 <li>Error Response:</li>
                 <div class="code-box">
                     <code>{<br>
-                        <span class="redtxt">"error":</span> <span class="grntxt">"Unauthorized"</span>,<br>
-                        <span class="redtxt">"message":</span> <span class="grntxt">"Invalid API Key"</span><br>
+                        <span class="indent redtxt">"error":</span> <span class="grntxt">"Unauthorized"</span>,<br>
+                        <span class="indent redtxt">"message":</span> <span class="grntxt">"Invalid API Key"</span><br>
                     }
                     </code>
                 </div>
@@ -70,141 +70,178 @@
         <section class="main-section" id="endpoints">
             <header><h2>Endpoints</h2></header>
             <p>This section provides details on the main API endpoints for managing cats, subscriptions, and items. Each endpoint includes the HTTP method, path, required parameters, and example request/response data.</p>
-            <h3>1. GET /cats</h3>
+            <h3>1.<span class="codetxt">GET /cats</span> </h3>
             <p><span class=bold>Description:</span> Retrieve a list of all registered cats in the system.</p>
             <ul>
                 <li>Request:</li>
-                <code>GET /cats</code>
+                <div class="code-box">
+                    <code>GET /cats</code>
+                </div>
                 <li>Response:</li>
-                <code>[
-                    {
-                      "id": "cat123",
-                      "name": "Whiskers",
-                      "age": 4,
-                      "personality": "Playful"
-                    },
-                    {
-                      "id": "cat456",
-                      "name": "Luna",
-                      "age": 2,
-                      "personality": "Relaxed"
-                    }
+                <div class="code-box">
+                <code>
+                    [<br>
+                    <div class="indent">{</div>
+                        <span class="indent2 redtxt">"id"</span>:<span class="grntxt"> "cat123"</span> ,<br>
+                        <span class="indent2 redtxt">"name"</span>:<span class="grntxt"> "Whiskers"</span> ,<br>
+                        <span class="indent2 redtxt">"age"</span>:<span class="grntxt"> 4</span>,<br>
+                        <span class="indent2 redtxt">"personality"</span>:<span class="grntxt"> "Playful"</span> <br>
+                    <div class="indent">},</div>
+                    <div class="indent">{</div>
+                        <span class="indent2 redtxt">"id"</span>:<span class="grntxt"> "cat456"</span>,<br>
+                        <span class="indent2 redtxt">"name"</span>:<span class="grntxt"> "Luna"</span>,<br>
+                        <span class="indent2 redtxt">"age"</span>:<span class="grntxt"> 2</span>,<br>
+                        <span class="indent2 redtxt">"personality"</span>:<span class="grntxt">"Relaxed"</span><br>
+                    <div class="indent">}</div>
                   ]
                 </code>
+                </div>
             </ul>
 
 
-            <h3>2. POST /cats</h3>
+            <h3>2.<span class="codetxt">POST /cats</span> </h3>
             <p><span class="bold">Description:</span> Register a new cat in the system.</p>
             <ul>
                 <li>Request:</li>
-                <code>POST /cats</code>
+                <div class="code-box">
+                  <code>POST /cats</code>
+                </div>
                 <li>Body:</li>
-                <code>{
-                    "name": "Shadow",
-                    "age": 3,
-                    "personality": "Curious"
-                  }
+                <div class="code-box">
+                  <code>
+                    <div class="indent">{</div>
+                    <span class="indent2 redtxt">"name"</span>:<span class="grntxt"> "Shadow"</span>,<br>
+                    <span class="indent2 redtxt">"age"</span>:<span class="grntxt"> 3</span>,<br>
+                    <span class="indent2 redtxt">"personality"</span>:<span class="grntxt">"Curious"</span><br>  
+                    <div class="indent">}</div>
                 </code>
+                </div>
+                
                 <li>Response:</li>
-                <code>{
-                    "id": "cat789",
-                    "name": "Shadow",
-                    "age": 3,
-                    "personality": "Curious"
-                  }
+                <div class="code-box">
+                <code>
+                  <div class="indent">{</div>
+                  <span class="indent2 redtxt">"id"</span>:<span class="grntxt">"cat789"</span><br>  
+                  <span class="indent2 redtxt">"name"</span>:<span class="grntxt"> "Shadow"</span>,<br>
+                  <span class="indent2 redtxt">"age"</span>:<span class="grntxt"> 3</span>,<br>
+                  <span class="indent2 redtxt">"personality"</span>:<span class="grntxt">"Curious"</span><br> 
+                  <div class="indent">}</div>
                 </code>
+              </div>
             </ul>
 
 
-            <h3>3. GET /subscriptions</h3>
+            <h3>3.<span class="codetxt">GET /subscriptions</span> </h3>
             <p><span class="bold">Description:</span> Retrieve all subscriptions in the system or filter by a specific cat.</p>
             <ul>
                 <li>Request:</li>
-                <code>GET /subscriptions</code>
+                <div class="code-box">
+                  <code>GET /subscriptions</code>
+                </div>
                 <li>Query Parameters (Optional)</li>
-                <li>cat_id - Retrieve subscriptions for a specific cat.</li>
+                  <ul>
+                    <li><span class="codetxt">cat_id</span> - Retrieve subscriptions for a specific cat.</li>
+                  </ul>
+                  <br>
                 <li>Response:</li>
-                <code>[
-                    {
-                      "subscription_id": "sub123",
-                      "cat_id": "cat123",
-                      "items": {
-                        "toys": ["feather", "laser_pointer"],
-                        "treats": ["salmon_bites"],
-                        "blanket": "soft_wool",
-                        "bed": "plush"
-                      },
-                      "frequency": "monthly",
-                      "next_delivery": "2024-11-01"
-                    }
-                  ] 
+                <div class="code-box">
+                <code>[<br>
+                  <div class="indent">{</div>
+                      <span class="indent2 redtxt">"subscription_id"</span>:<span class="grntxt"> "sub123"</span>,<br>
+                      <span class="indent2 redtxt">"cat_id"</span>:<span class="grntxt"> "cat123"</span>,<br>
+                      <span class="indent2 redtxt">"items"</span>: {<br>
+                      <span class="indent2 redtxt">"toys"</span>: [<span class="grntxt">"feather"</span>,<span class="grntxt">"laser_pointer"</span>],<br>
+                      <span class="indent2 redtxt">"treats"</span>: [<span class="grntxt"> "salmon_bites"</span>],<br>
+                      <span class="indent2 redtxt">"blanket"</span>: <span class="grntxt"> "soft_wool"</span>,<br>
+                      <span class="indent2 redtxt">"bed"</span>: <span class="grntxt">"plush"</span><br>
+                      <div class="indent">},</div>
+                      <span class="indent2 redtxt">"frequency"</span>: <span class="grntxt">"monthly"</span>,<br>
+                      <span class="indent2 redtxt">"next_delivery"</span>: <span class="grntxt">"2024-11-01"</span><br> 
+                    <div class="indent">}</div>
+                  ]<br>
                 </code>
+              </div>
             </ul>
 
-            <h3>4. POST /subscriptions</h3>
+            <h3>4. <span class="codetxt">POST /subscriptions</span></h3>
             <p><span class="bold">Description:</span>Create a new subscription box for a cat.</p>
             <ul>
                 <li>Request:</li>
-                <code>POST /subscriptions</code>
+                <div class="code-box">
+                  <code>POST /subscriptions</code>
+                </div>
                 <li>Body:</li>
-                <code>{
-                    "cat_id": "cat123",
-                    "items": {
-                      "toys": ["feather", "laser_pointer"],
-                      "treats": ["salmon_bites"],
-                      "blanket": "soft_wool",
-                      "bed": "plush"
-                    },
-                    "frequency": "monthly"
-                  }
-                </code>
+                <div class="code-box">
+                  <code>{<br>
+                    <span class="indent2 redtxt">"cat_id"</span>:<span class="grntxt">"cat123"</span>,<br>
+                    <span class="indent2 redtxt">"items"</span>: { <br>
+                    <span class="indent3 redtxt">"toys"</span>: [<span class="grntxt">"feather"</span>,<span class="grntxt">"laser_pointer"</span>], <br>
+                    <span class="indent3 redtxt">"treats"</span>: [<span class="grntxt">"salmon_bites"</span>], <br>
+                    <span class="indent3 redtxt">"blanket"</span>: <span class="grntxt">"soft_wool"</span>, <br>
+                    <span class="indent3 redtxt">"bed"</span>: <span class="grntxt">"plush"</span><br>
+                    },<br>
+                    <span class="indent2 redtxt">"frequency"</span>:<span class="grntxt"> "monthly"</span><br>   
+                    }
+                  </code>
+                </div>
                 <li>Response:</li>
-                <code>{
-                    "subscription_id": "sub456",
-                    "status": "created",
-                    "next_delivery": "2024-11-01"
-                  }
-                </code>
+                <div class="code-box">
+                  <code>{<br>
+                      <span class="indent2 redtxt">"subscription_id"</span>: <span class="grntxt">"sub456"</span>,<br>
+                      <span class="indent2 redtxt">"status"</span>: <span class="grntxt">"created"</span>,<br>
+                      <span class="indent2 redtxt">"next_delivery"</span>: <span class="grntxt">"2024-11-01"</span><br>
+                    }
+                  </code>
+                </div>
             </ul>
 
 
-            <h3>5. DELETE /subscriptions/{subscription_id}</h3>
+            <h3>5. <span class="codetxt">DELETE /subscriptions/{subscription_id}</span></h3>
             <p><span class="bold">Description:</span>Cancel an existing subscription.</p>
             <ul>
                 <li>Request:</li>
-                <code>DELETE /subscriptions/sub456</code>
+                <div class="code-box">
+                  <code>DELETE /subscriptions/sub456</code>
+                </div>
                 <li>Response:</li>
-                <code>{
-                    "subscription_id": "sub456",
-                    "status": "cancelled"
-                  }
-                </code>
+                <div class="code-box">
+                  <code>{<br>
+                    <span class="indent2 redtxt">"subscription_id"</span>: <span class="grntxt">"sub456"</span>,<br>
+                    <span class="indent2 redtxt">"status"</span>: <span class="grntxt">"cancelled"</span><br>
+                    }
+                  </code>
+                </div>
             </ul>
 
 
-            <h3>6. PATCH /subscriptions/{subscription_id}</h3>
+            <h3>6. <span class="codetxt">PATCH /subscriptions/{subscription_id}</span></h3>
             <p><span class="bold">Description:</span>Update the items in an existing subscription.</p>
             <ul>
                 <li>Request:</li>
-                <code>PATCH /subscriptions/sub456</code>
+                <div class="code-box">
+                  <code>PATCH /subscriptions/sub456</code>
+                </div>
                 <li>Body:</li>
-                <code>{
-                    "items": {
-                      "toys": ["feather", "ball"],
-                      "treats": ["chicken_bites"],
-                      "blanket": "cotton",
-                      "bed": "memory_foam"
+                <div class="code-box">
+                  <code>{<br>
+                    <span class="indent2 redtxt">"items"</span>: {<br>
+                    <span class="indent3 redtxt">"toys"</span>: [<span class="grntxt">"feather"</span>, <span class="grntxt">"ball"</span>],<br>
+                    <span class="indent3 redtxt">"treats"</span>: [<span class="grntxt">"chicken_bites"</span>],<br>
+                    <span class="indent3 redtxt">"blanket"</span>: <span class="grntxt">"cotton"</span>,<br>
+                    <span class="indent3 redtxt">"bed"</span>: <span class="grntxt">"memory_foam"</span><br>
+                    <div class="indent">}</div>
                     }
-                  }
-                </code>
+                  </code>
+               </div>
                 <li>Response:</li>
-                <code>{
-                    "subscription_id": "sub456",
-                    "status": "updated",
-                    "next_delivery": "2024-12-01"
-                  }
-                </code>
+                <div class="code-box">
+                  <code>{<br>
+                    <span class="indent2 redtxt">"subscription_id"</span>: <span class="grntxt">"sub456"</span>,<br>
+                    <span class="indent2 redtxt">"status"</span>: <span class="grntxt">"updated"</span>,<br>
+                    <span class="indent2 redtxt">"next_delivery"</span>: <span class="grntxt">"2024-12-01"</span><br>
+                  }<br>
+                  </code>
+               </div>
             </ul>
 
         </section>
@@ -212,180 +249,204 @@
 
         <section class="main-section" id="data_models">
             <header><h2>Data Models</h2></header>
-            <p>This section provides definitions for the main data objects used in the Purrfect Paws Subscription Box API. These models describe the structure of the data and what each attribute represents.</p>
+            <p>This section provides definitions for the main data objects used in the <span class="special-text">Purrfect Paws Subscription Box ©</span> API. These models describe the structure of the data and what each attribute represents.</p>
             <h3>1. Cat Object</h3>
-            <p>The Cat object represents a cat registered in the subscription system. Each cat has attributes that help personalize the subscription box.</p>
+            <p>The <span class="codetxt">Cat</span> object represents a cat registered in the subscription system. Each cat has attributes that help personalize the subscription box.</p>
             <li>Attributes:</li>
             <ul>
-                <li>id: (string) - A unique identifier for the cat.</li>
-                <li>name: (string) - The cat’s name.</li>
-                <li>age: (number) - The cat’s age in years.</li>
-                <li>personality: (string) - A description of the cat’s personality (e.g., "Playful", "Curious").</li>
+                <li><span class="codetxt">id:</span> <i(string)</i> - A unique identifier for the cat.</li>
+                <li><span class="codetxt">name:</span> <i>(string)</i> - The cat’s name.</li>
+                <li><span class="codetxt">age:</span> <i>(number)</i> - The cat’s age in years.</li>
+                <li><span class="codetxt">personality:</span> <i>(string)</i> - A description of the cat’s personality (e.g., "Playful", "Curious").</li>
             </ul>
             <li>Example:</li>
-            <code>{
-                "id": "cat123",
-                "name": "Whiskers",
-                "age": 4,
-                "personality": "Playful"
-              }
-            </code>
+            <div class="code-box">
+              <code>{<br>
+                <span class="indent2 redtxt">"id"</span>: <span class="grntxt">"cat123"</span>,<br>
+                <span class="indent2 redtxt">"name"</span>: <span class="grntxt">"Whiskers"</span>,<br>
+                <span class="indent2 redtxt">"age"</span>: <span class="grntxt">4</span>,<br>
+                <span class="indent2 redtxt">"personality"</span>: <span class="grntxt">"Playful"</span><br>
+                }
+              </code>
+            </div>
 
             <h3>2. Subscription Object</h3>
-            <p>The Subscription object represents a subscription box tied to a specific cat. This object includes details about the items selected for the box and the delivery schedule.</p>
+            <p>The <span class="codetxt">Subscription</span> object represents a subscription box tied to a specific cat. This object includes details about the items selected for the box and the delivery schedule.</p>
             <li>Attributes:</li>
             <ul>
-                <li>subscription_id: (string) - A unique identifier for the subscription.</li>
-                <li>cat_id: (string) - The ID of the cat the subscription is for.</li>
-                <li>items: (object) - An object containing the selected items (toys, treats, blanket, bed) for the subscription box.</li>
+                <li><span class="codetxt">subscription_id</span>: <i>(string)</i> - A unique identifier for the subscription.</li>
+                <li><span class="codetxt">cat_id</span>: <i>(string)</i> - The ID of the cat the subscription is for.</li>
+                <li><span class="codetxt">items</span>: <i>(object)</i> - An object containing the selected items (toys, treats, blanket, bed) for the subscription box.</li>
+                <br>
                 <ul>
-                    <li>toys: (array of strings) - List of selected toys.</li>
-                    <li>treats: (array of strings) - List of selected treats.</li>
-                    <li>blanket: (string) - The type of blanket selected.</li>
-                    <li>bed: (string) - The type of bed selected.</li>
+                    <li><span class="codetxt">toys</span>: <i>(array of strings)</i> - List of selected toys.</li>
+                    <li><span class="codetxt">treats</span>: <i>(array of strings)</i> - List of selected treats.</li>
+                    <li><span class="codetxt">blanket</span>: <i>(string)</i> - The type of blanket selected.</li>
+                    <li><span class="codetxt">bed</span>: <i>(string)</i> - The type of bed selected.</li>
                 </ul>
-                <li>frequency: (string) - The frequency of the subscription box (e.g., "monthly", "bi-monthly").</li>
-                <li>next_delivery: (string, date) - The date of the next scheduled delivery.</li>
-                <li>status: (string) - The current status of the subscription (e.g., "created", "cancelled").</li>
+                <br>
+                <li><span class="codetxt">frequency</span>: <i>(string)</i> - The frequency of the subscription box (e.g., "monthly", "bi-monthly").</li>
+                <li><span class="codetxt">next_delivery</span>: <i>(string, date)</i> - The date of the next scheduled delivery.</li>
+                <li><span class="codetxt">status</span>: <i>(string)</i> - The current status of the subscription (e.g., "created", "cancelled").</li>
             </ul>
             <li>Example:</li>
-            <code>{
-                "subscription_id": "sub456",
-                "cat_id": "cat123",
-                "items": {
-                  "toys": ["feather", "laser_pointer"],
-                  "treats": ["salmon_bites"],
-                  "blanket": "soft_wool",
-                  "bed": "plush"
-                },
-                "frequency": "monthly",
-                "next_delivery": "2024-11-01",
-                "status": "created"
-              }
-            </code>
+            <div class="code-box">
+              <code>{<br>
+                <span class="indent2 redtxt">"subscription_id"</span>: <span class="grntxt">"sub456"</span>,<br>
+                <span class="indent2 redtxt">"cat_id"</span>: <span class="grntxt">"cat123"</span>,<br>
+                <span class="indent2 redtxt">"items"</span>: {<br>
+                <span class="indent3 redtxt">"toys"</span>: [<span class="grntxt">"feather"</span>, <span class="grntxt">"laser_pointer"</span>],<br>
+                <span class="indent3 redtxt">"treats"</span>: [<span class="grntxt">"salmon_bites"</span>],<br>
+                <span class="indent3 redtxt">"blanket"</span>: <span class="grntxt">"soft_wool"</span>,<br>
+                <span class="indent3 redtxt">"bed"</span>: <span class="grntxt">"plush"</span><br>
+                  },<br>
+                  <span class="indent2 redtxt">"frequency"</span>: <span class="grntxt">"monthly"</span>,<br>
+                  <span class="indent2 redtxt">"next_delivery"</span>: <span class="grntxt">"2024-11-01"</span>,<br>
+                  <span class="indent2 redtxt">"status"</span>: <span class="grntxt">"created"</span><br>
+                }
+              </code>
+            </div>
 
             <h3>3. Item Object</h3>
-            <p>The Item object represents the individual products (toys, treats, blankets, beds) that can be added to a subscription box.</p>
+            <p>The <span class="codetxt">Item</span> object represents the individual products (toys, treats, blankets, beds) that can be added to a subscription box.</p>
             <li>Attributes:</li>
             <ul>
-                <li>name: (string) - The name of the item.</li>
-                <li>category: (string) - The type of item (e.g., "toy", "treat", "blanket", "bed").</li>
-                <li>description: (string) - A brief description of the item.</li>
-                <li>price: (number) - The price of the item in USD.</li>
+                <li><span class="codetxt">name</span>: <i>(string)</i> - The name of the item.</li>
+                <li><span class="codetxt">category</span>: <i>(string)</i> - The type of item (e.g., "toy", "treat", "blanket", "bed").</li>
+                <li><span class="codetxt">description</span>: <i>(string)</i> - A brief description of the item.</li>
+                <li><span class="codetxt">price</span>: <i>(number)</i> - The price of the item in USD.</li>
             </ul>
             <li>Example:</li>
-            <code>{
-                "name": "Feather Toy",
-                "category": "toy",
-                "description": "A fun feather toy to keep your cat entertained.",
-                "price": 5.99
-              }
-            </code>
+            <div class="code-box">
+              <code>{<br>
+                <span class="indent2 redtxt">"name"</span>: <span class="grntxt">"Feather Toy"</span>,<br>
+                <span class="indent2 redtxt">"category"</span>: <span class="grntxt">"toy"</span>,<br>
+                <span class="indent2 redtxt">"description"</span>: <span class="grntxt">"A fun feather toy to keep your cat entertained."</span>,<br>
+                <span class="indent2 redtxt">"price"</span>: <span class="grntxt">5.99</span><br>
+                }
+              </code>
+            </div>
 
             <h3>4. User Object</h3>
-            <p>If your API allows for user management, you can define a User object representing the user who is managing the subscription boxes.</p>
+            <p>If your API allows for user management, you can define a <span class="codetxt">User</span> object representing the user who is managing the subscription boxes.</p>
             <li>Attributes:</li>
             <ul>
-                <li>user_id: (string) - A unique identifier for the user.</li>
-                <li>email: (string) - The user's email address.</li>
-                <li>name: (string) - The name of the user.</li>
-                <li>subscriptions: (array of strings) - A list of subscription IDs that the user manages.</li>
+                <li><span class="codetxt">user_id</span>: <i>(string)</i> - A unique identifier for the user.</li>
+                <li><span class="codetxt">email</span>: <i>(string)</i> - The user's email address.</li>
+                <li><span class="codetxt">name</span>: <i>(string)</i> - The name of the user.</li>
+                <li><span class="codetxt">subscriptions</span>: <i>(array of strings)</i> - A list of subscription IDs that the user manages.</li>
             </ul>
             <li>Example:</li>
-            <code>{
-                "user_id": "user789",
-                "email": "catlover@example.com",
-                "name": "Jane Doe",
-                "subscriptions": ["sub456", "sub789"]
-              }
-            </code>
+            <div class="code-box">
+              <code>{<br>
+                <span class="indent2 redtxt">"user_id"</span>: <span class="grntxt">"user789"</span>,<br>
+                <span class="indent2 redtxt">"email"</span>: <span class="grntxt">"catlover@example.com"</span>,<br>
+                <span class="indent2 redtxt">"name"</span>: <span class="grntxt">"Jane Doe"</span>,<br>
+                <span class="indent2 redtxt">"subscriptions"</span>: [<span class="grntxt">"sub456"</span>, <span class="grntxt">"sub789"</span>]<br>
+                }
+              </code>
+            </div>
         </section>
         <hr>
 
         <section class="main-section" id="error_handling">
             <header><h2>Error Handling</h2></header>
-            <p>The Purrfect Paws Subscription Box API uses standard HTTP status codes to indicate the success or failure of API requests. In case of an error, the API returns a JSON response with details about the error, including the status code and a message explaining what went wrong.</p>
+            <p><span class="special-text">Purrfect Paws Subscription Box ©</span> API uses standard HTTP status codes to indicate the success or failure of API requests. In case of an error, the API returns a JSON response with details about the error, including the status code and a message explaining what went wrong.</p>
             <h3>Error Response Format</h3>
             <p>All error responses follow the structure below:</p>
-            <code>{
-                "error": "string",
-                "message": "string",
-                "status_code": "number"
-              }
-            </code>
+            <div class="code-box">
+              <code>{<br>
+                <span class="indent2 redtxt">"error"</span>: <span class="grntxt">"string"</span>,<br>
+                <span class="indent2 redtxt">"message"</span>: <span class="grntxt">"string"</span>,<br>
+                <span class="indent2 redtxt">"status_code"</span>: <span class="grntxt">"number"</span><br>
+                }
+              </code>
+            </div>
             <ul>
-                <li>error: A brief description of the type of error.</li>
-                <li>message: A more detailed explanation of what went wrong.</li>
-                <li>status_code: The HTTP status code associated with the error.</li>
+                <li><span class="codetxt">error</span>: A brief description of the type of error.</li>
+                <li><span class="codetxt">message</span>: A more detailed explanation of what went wrong.</li>
+                <li><span class="codetxt">status_code</span>: The HTTP status code associated with the error.</li>
             </ul>
 
             <h3>Common HTTP Status Codes</h3>
             <p>Here are the most common HTTP status codes you may encounter while using the API:</p>
             <ul>
-                <li>200 OK: The request was successful, and the server returned the requested data.</li>
-                <li>201 Created: The request was successful, and a new resource (e.g., subscription, cat) was created.</li>
-                <li>400 Bad Request: The server could not process the request due to invalid input (e.g., missing required fields or malformed JSON).</li>
-                <li>401 Unauthorized: Authentication failed, usually due to a missing or invalid API key.</li>
-                <li>404 Not Found: The requested resource could not be found (e.g., a non-existent subscription ID).</li>
-                <li>500 Internal Server Error: An unexpected error occurred on the server side.</li>
+                <li><span class="bold">200 OK:</span> The request was successful, and the server returned the requested data.</li>
+                <li><span class="bold">201 Created:</span> The request was successful, and a new resource (e.g., subscription, cat) was created.</li>
+                <li><span class="bold">400 Bad Request:</span> The server could not process the request due to invalid input (e.g., missing required fields or malformed JSON).</li>
+                <li><span class="bold">401 Unauthorized:</span> Authentication failed, usually due to a missing or invalid API key.</li>
+                <li><span class="bold">404 Not Found:</span> The requested resource could not be found (e.g., a non-existent subscription ID).</li>
+                <li><span class="bold">500 Internal Server Error:</span> An unexpected error occurred on the server side.</li>
             </ul>
 
             <h3>Examples of Error Responses</h3>
-            <p>1. 400 Bad Request</p>
+            <p>1. <span class="bold">400 Bad Request</span></p>
             <p>Occurs when the client sends a request with missing or invalid data.</p>
             <ul>
-                <li>Example Scenario: Trying to create a subscription without specifying required fields (like cat_id).</li>
+                <li><span class="bold">Example Scenario:</span> Trying to create a subscription without specifying required fields (like <span class="codetxt">cat_id</span>).</li>
+                <br>
                 <li>Response:</li>
-                <code>{
-                    "error": "Bad Request",
-                    "message": "Missing required field: cat_id",
-                    "status_code": 400
-                  }
-                </code>
+                <div class="code-box">
+                  <code>{<br>
+                    <span class="indent2 redtxt">"error"</span>: <span class="grntxt">"Bad Request"</span>,<br>
+                    <span class="indent2 redtxt">"message"</span>: <span class="grntxt">"Missing required field: cat_id"</span>,<br>
+                    <span class="indent2 redtxt">"status_code"</span>: <span class="redtxt">400</span><br>
+                    }
+                  </code>
+               </div>
             </ul>
-            <p>2. 401 Unauthorized</p>
+            <p>2. <span class="bold">401 Unauthorized</span></p>
             <p>Occurs when authentication fails due to a missing or invalid API key.</p>
             <ul>
-                <li>Example Scenario: Making a request without including the API key in the Authorization header.</li>
+                <li><span class="bold">Example Scenario:</span> Making a request without including the API key in the Authorization header.</li>
+                <br>
                 <li>Response:</li>
-                <code>{
-                    "error": "Unauthorized",
-                    "message": "API key is missing or invalid",
-                    "status_code": 401
-                  }
-                </code>
+                <div class="code-box">
+                  <code>{<br>
+                    <span class="indent2 redtxt">"error"</span>: <span class="grntxt">"Unauthorized"</span>,<br>
+                    <span class="indent2 redtxt">"message"</span>: <span class="grntxt">"API key is missing or invalid"</span>,<br>
+                    <span class="indent2 redtxt">"status_code"</span>: <span class="redtxt">401</span><br>
+                    }
+                  </code>
+              </div>
             </ul>
-            <p>3. 404 Not Found</p>
+            <p>3. <span class="bold">404 Not Found</span></p>
             <p>Occurs when the client requests a resource that does not exist.</p>
             <ul>
-                <li>Example Scenario: Trying to retrieve a subscription with an invalid subscription_id.</li>
+                <li><span class="bold">Example Scenario:</span> Trying to retrieve a subscription with an invalid subscription_id.</li>
+                <br>
                 <li>Response:</li>
-                <code>{
-                    "error": "Not Found",
-                    "message": "The subscription with ID 'sub789' was not found",
-                    "status_code": 404
+                <div class="code-box">
+                  <code>{<br>
+                    <span class="indent2 redtxt">"error"</span>: <span class="grntxt">"Not Found"</span>,<br>
+                    <span class="indent2 redtxt">"message"</span>: <span class="grntxt">"The subscription with ID 'sub789' was not found"</span>,<br>
+                    <span class="indent2 redtxt">"status_code"</span>:<span class="redtxt">404</span><br>
                   }
                 </code>
+                </div>
             </ul>
-            <p>4. 500 Internal Server Error</p>
+            <p>4. <span class="bold">500 Internal Server Error</span></p>
             <p>Occurs when the server encounters an unexpected error. This is typically a server-side issue that should be reported to the API provider.</p>
             <ul>
-                <li>Example Scenario: A system error occurs while processing a request.</li>
+                <li><span class="bold">Example Scenario:</span> A system error occurs while processing a request.</li>
+                <br>
                 <li>Response:</li>
-                <code>
-                    {
-                        "error": "Internal Server Error",
-                        "message": "An unexpected error occurred. Please try again later.",
-                        "status_code": 500
+                <div class="code-box">
+                  <code>
+                    {<br>
+                      <span class="indent2 redtxt">"error"</span>: <span class="grntxt">"Internal Server Error"</span>,<br>
+                      <span class="indent2 redtxt">"message"</span>: <span class="grntxt">"An unexpected error occurred. Please try again later."</span>,<br>
+                      <span class="indent2 redtxt">"status_code"</span>: <span class="redtxt">500</span><br>
                       }
-                </code>
+                  </code>
+                </div>
             </ul>
 
             <h3>Handling Errors</h3>
             <p>When receiving an error response, developers should:</p>
             <ul>
-                <li>Inspect the status_code to determine the type of error.</li>
-                <li>Read the message for more detailed information about the issue.</li>
+                <li>Inspect the <span class="codetxt">status_code</span> to determine the type of error.</li>
+                <li>Read the <span class="codetxt">message</span> for more detailed information about the issue.</li>
                 <li>Verify that the request complies with the API documentation (e.g., required fields, proper authentication).</li>
             </ul>
         </section>
@@ -393,148 +454,179 @@
 
         <section class="main-section" id="examples">
             <header><h2>Examples</h2></header>
-            <p>This section provides practical examples of how to use the Purrfect Paws Subscription Box API to perform common tasks, such as registering a cat, creating a subscription, and updating subscription details.</p>
+            <p>This section provides practical examples of how to use the <span class="special-text">Purrfect Paws Subscription Box ©</span> API to perform common tasks, such as registering a cat, creating a subscription, and updating subscription details.</p>
             
             <h3>1. Register a New Cat</h3>
-            <p>This example shows how to add a new cat to the system. After successfully registering a cat, you’ll receive an id to use for future requests related to that cat.</p>
+            <p>This example shows how to add a new cat to the system. After successfully registering a cat, you’ll receive an <span class="codetxt">id</span> to use for future requests related to that cat.</p>
             <ul>
                <li>Request:</li> 
-               <code>POST /cats
-                Content-Type: application/json
-                Authorization: Bearer YOUR_API_KEY
-                </code>
+               <div class="code-box">
+                  <code>POST /cats<br>
+                  Content-Type: application/json<br>
+                  Authorization: Bearer YOUR_API_KEY<br>
+                  </code>
+                </div>
                <li>Body:</li> 
-               <code>
-                {
-                    "name": "Simba",
-                    "age": 5,
-                    "personality": "Adventurous"
-                  }
-               </code>
+               <div class="code-box">
+                  <code>
+                    {<br>
+                      <span class="indent2 redtxt">"name"</span>: <span class="grntxt">"Simba"</span>,<br>
+                      <span class="indent2 redtxt">"age"</span>: <span class="redtxt">5</span>,<br>
+                      <span class="indent2 redtxt">"personality"</span>: <span class="grntxt">"Adventurous"</span><br>
+                      }
+                  </code>
+               </div>
                <li>Response</li> 
-               <code>{
-                "id": "cat001",
-                "name": "Simba",
-                "age": 5,
-                "personality": "Adventurous"
-              }
-              </code>
+               <div class="code-box">
+                  <code>{<br>
+                    <span class="indent2 redtxt">"id"</span>: <span class="grntxt">"cat001"</span>,<br>
+                    <span class="indent2 redtxt">"name"</span>: <span class="grntxt">"Simba"</span>,<br>
+                    <span class="indent2 redtxt">"age"</span>: <span class="redtxt">5</span>,<br>
+                    <span class="indent2 redtxt">"personality"</span>: <span class="grntxt">"Adventurous"</span><br>
+                  }
+                  </code>
+              </div>
             </ul>
 
             <h3>2. Create a Subscription for a Cat</h3>
-            <p>This example demonstrates how to create a personalized subscription box for a specific cat using the cat_id from the previous step.</p>
+            <p>This example demonstrates how to create a personalized subscription box for a specific cat using the <span class="codetxt">cat_id</span> from the previous step.</p>
             <ul>
                <li>Request:</li> 
-               <code>POST /subscriptions
-                Content-Type: application/json
-                Authorization: Bearer YOUR_API_KEY
-                </code>
+               <div class="code-box">
+                <code>
+                  POST /subscriptions<br>
+                  Content-Type: application/json<br>
+                  Authorization: Bearer YOUR_API_KEY
+                  </code>
+               </div>
                <li>Body:</li> 
-               <code>{
-                "cat_id": "cat001",
-                "items": {
-                  "toys": ["feather", "ball"],
-                  "treats": ["tuna_bites"],
-                  "blanket": "soft_wool",
-                  "bed": "plush"
-                },
-                "frequency": "monthly"
-              }
-              </code>
+               <div class="code-box">
+                <code>{<br>
+                  <span class="indent2 redtxt">"cat_id"</span>: <span class="grntxt">"cat001"</span>,<br>
+                  <span class="indent3 redtxt">"items"</span>: {<br>
+                    <span class="indent2 redtxt">"toys"</span>: [<span class="grntxt">"feather"</span>, <span class="grntxt">"ball"</span>],<br>
+                    <span class="indent2 redtxt">"treats"</span>: [<span class="grntxt">"tuna_bites"</span>],<br>
+                    <span class="indent2 redtxt">"blanket"</span>: <span class="grntxt">"soft_wool"</span>,<br>
+                    <span class="indent2 redtxt">"bed"</span>: <span class="grntxt">"plush"</span><br>
+                    <span class="indent"></span>},<br>
+                  <span class="indent2 redtxt">"frequency"</span>: <span class="grntxt">"monthly"</span><br>
+                }
+                </code>
+              </div>
                <li>Response</li> 
-               <code>{
-                "subscription_id": "sub001",
-                "status": "created",
-                "next_delivery": "2024-11-01"
-              }
-              </code>
+               <div class="code-box">
+                <code>{<br>
+                  <span class="indent2 redtxt">"subscription_id"</span>: <span class="grntxt">"sub001"</span>,<br>
+                  <span class="indent2 redtxt">"status"</span>: <span class="grntxt">"created"</span>,<br>
+                  <span class="indent2 redtxt">"next_delivery"</span>: <span class="grntxt">"2024-11-01"</span><br>
+                }
+                </code>
+              </div>
             </ul>
 
             <h3>3. Retrieve All Subscriptions</h3>
             <p>This example retrieves a list of all subscriptions, showing the items for each cat.</p>
             <ul>
                <li>Request:</li> 
-               <code>GET /subscriptions
-                Authorization: Bearer YOUR_API_KEY
-                </code>
+               <div class="code-box">
+                  <code>GET /subscriptions<br>
+                  Authorization: Bearer YOUR_API_KEY
+                  </code>
+                </div>
                <li>Response</li> 
-               <code>[
-                {
-                  "subscription_id": "sub001",
-                  "cat_id": "cat001",
-                  "items": {
-                    "toys": ["feather", "ball"],
-                    "treats": ["tuna_bites"],
-                    "blanket": "soft_wool",
-                    "bed": "plush"
-                  },
-                  "frequency": "monthly",
-                  "next_delivery": "2024-11-01"
-                }
-              ]
-              </code>
+               <div class="code-box">
+                <code>[<br>
+                  <div class="indent">{</div>
+                    <span class="indent2 redtxt">"subscription_id"</span>: <span class="grntxt">"sub001"</span>,<br>
+                    <span class="indent2 redtxt">"cat_id"</span>: <span class="grntxt">"cat001"</span>,<br>
+                    <span class="indent2 redtxt">"items"</span>: {<br>
+                      <span class="indent3 redtxt">"toys"</span>: [<span class="grntxt">"feather"</span>, <span class="grntxt">"ball"</span>],<br>
+                      <span class="indent3 redtxt">"treats"</span>: [<span class="grntxt">"tuna_bites"</span>],<br>
+                      <span class="indent3 redtxt">"blanket"</span>: <span class="grntxt">"soft_wool"</span>,<br>
+                      <span class="indent3 redtxt">"bed"</span>: <span class="grntxt">"plush"</span><br>
+                      <div class="indent2">},</div>
+                    <span class="indent2 redtxt">"frequency"</span>: <span class="grntxt">"monthly"</span>,<br>
+                    <span class="indent2 redtxt">"next_delivery"</span>: <span class="grntxt">"2024-11-01"</span>
+                  <div class="indent">}</div>
+                ]
+                </code>
+              </div>
             </ul>
 
             <h3>4. Update an Existing Subscription</h3>
             <p>Here’s an example of how to update the items in an existing subscription. You can modify specific parts of the subscription, such as changing the toy selection.</p>
             <ul>
                <li>Request:</li> 
-               <code>PATCH /subscriptions/sub001
-                Content-Type: application/json
-                Authorization: Bearer YOUR_API_KEY
-                </code>
+               <div class="code-box">
+                  <code>PATCH /subscriptions/sub001<br>
+                  Content-Type: application/json<br>
+                  Authorization: Bearer YOUR_API_KEY
+                  </code>
+              </div>
                <li>Body:</li> 
-               <code>{
-                "items": {
-                  "toys": ["mouse", "laser_pointer"],
-                  "treats": ["chicken_bites"]
+               <div class="code-box">
+                <code>{<br>
+                  <span class="indent2 redtxt">"items"</span>: {<br>
+                  <span class="indent3 redtxt">"toys"</span>: [<span class="grntxt">"mouse"</span>, <span class="grntxt">"laser_pointer"</span>],<br>
+                  <span class="indent3 redtxt">"treats"</span>: [<span class="grntxt">"chicken_bites"</span>]<br>
+                  <div class="indent">}</div>
                 }
-              }
-              </code>
+                </code>
+              </div>
                <li>Response</li>
-               <code>{
-                "subscription_id": "sub001",
-                "status": "updated",
-                "next_delivery": "2024-12-01"
-              }
-              </code>
+               <div class="code-box">
+                <code>{<br>
+                  <span class="indent2 redtxt">"subscription_id"</span>: <span class="grntxt">"sub001"</span>,<br>
+                  <span class="indent2 redtxt">"status"</span>: <span class="grntxt">"updated"</span>,<br>
+                  <span class="indent2 redtxt">"next_delivery"</span>: <span class="grntxt">"2024-12-01"</span><br>
+                }
+                </code>
+              </div>
             </ul>
 
             <h3>5. Cancel a Subscription</h3>
             <p>This example shows how to cancel a subscription for a cat. The subscription_id is required for this request.</p>
             <ul>
                <li>Request:</li>
-               <code>DELETE /subscriptions/sub001
-                Authorization: Bearer YOUR_API_KEY
+               <div class="code-box">
+                <code>DELETE /subscriptions/sub001<br>
+                  Authorization: Bearer YOUR_API_KEY
                 </code> 
+              </div>
                <li>Response</li> 
-               <code>{
-                "subscription_id": "sub001",
-                "status": "cancelled"
-              }
-              </code>
+               <div class="code-box">
+                <code>{<br>
+                  <span class="indent2 redtxt">"subscription_id"</span>: <span class="grntxt">"sub001"</span>,<br>
+                  <span class="indent2 redtxt">"status"</span>: <span class="grntxt">"cancelled"</span><br>
+                }
+                </code>
+              </div>
             </ul>
 
             <h3>6. Handle an Error (Invalid API Key)</h3>
             <p>This example demonstrates how an error response might look if you use an invalid API key in your request.</p>
             <ul>
                <li>Request:</li> 
-               <code>GET /cats
-                Authorization: Bearer INVALID_API_KEY
-                </code>
+               <div class="code-box">
+                  <code>GET /cats<br>
+                  Authorization: Bearer INVALID_API_KEY
+                  </code>
+              </div>
                <li>Response</li> 
-               <code>{
-                "error": "Unauthorized",
-                "message": "API key is missing or invalid",
-                "status_code": 401
-              }
-              </code>
+               <div class="code-box">
+                  <code>{<br>
+                    <span class="indent2 redtxt">"error"</span>: <span class="grntxt">"Unauthorized"</span>,<br>
+                    <span class="indent2 redtxt">"message"</span>: <span class="grntxt">"API key is missing or invalid"</span>,<br>
+                    <span class="indent2 redtxt">"status_code"</span>: <span class="redtxt">401</span><br>
+                  }
+                  </code>
+              </div>
             </ul>
         </section>
         <hr>
 
         <h2>Conclusion</h2>
-        <p>These examples show how to perform essential operations within the Purrfect Paws Subscription Box API, from managing cat profiles to updating and canceling subscriptions. By using these examples as a guide, developers can quickly integrate the API into their own applications.</p>
+        <p>These examples show how to perform essential operations within the <span class="special-text">Purrfect Paws Subscription Box ©</span> API, from managing cat profiles to updating and canceling subscriptions. By using these examples as a guide, developers can quickly integrate the API into their own applications.</p>
 
     </main>
 
