@@ -1,5 +1,5 @@
 body{
-    background-color: rgb(235, 235, 225);
+    background-color: rgb(240, 240, 238);
 }
 
 p, li {line-height: 1.4;}
@@ -12,6 +12,11 @@ p, li {line-height: 1.4;}
     top: 0;
     background-color: #a3b18a;
     padding-top: 20px;
+    transition: transform 0.3s ease;
+}
+
+#navbar.active {
+    transform: translateX(-100%); /* Hide navbar off-screen */
 }
 
 #navbar h2{
@@ -73,7 +78,7 @@ code{
     color: white;
     font-size: 14px;
     padding: 15px;
-    margin: 15px 0;
+    margin: 15px;
     border-radius: 10px;
 }
 
@@ -103,3 +108,45 @@ code{
     padding: 2px;
     border-radius: 3px;
 }
+
+.icon {
+    display: none; 
+}
+
+@media screen and (max-width: 480px) {
+    #navbar {
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+    }
+
+    h2{
+        text-align: center;
+    }
+  
+    #navbar > .nav-link{
+        display: none;
+    }
+
+    #navbar a {
+        color: white;
+        padding: 14px 16px;
+        text-align: center;
+    }
+
+    #navbar > a.icon {
+        background: black;
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    #main-doc {
+        margin-left: 0;
+    }
+
+    h1{
+        text-align: center;
+    }
+  }
