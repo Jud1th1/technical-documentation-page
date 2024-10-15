@@ -1,5 +1,3 @@
-Technical documentation page
-
 # Technical Documentation Page
 
 ## Table of contents
